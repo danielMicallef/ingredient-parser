@@ -28,7 +28,7 @@ a.sort(key=lambda x: len(x), reverse=True)
 a = map(escape_re_string, a)
 
 PARSER_RE = re.compile(
-    r'(?P<quantity>(?:[\d\.,][\d\.,\s]*)?\s*(?:(?:%s)\s*)*)?\s*(?P<unit>%s)?\s*(?:%s)?\s*(?P<name>.+)?' % (
+    r'(?P<quantity>(?:[\d\.,][\d\.,\s]*)?\s*(?:(?:%s)\s*)*)?(\s*(?P<unit>%s)\s+)?(\s*(?:%s)\s+)?(\s*(?P<name>.+))?' % (
         '|'.join(NUMBERS), '|'.join(a), '|'.join(prepositions)))
 
 
