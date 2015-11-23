@@ -1,2 +1,6 @@
 *.pyc
 .idea
+.pypirc
+dist/
+ingredient_parser.egg-info/
+build/
