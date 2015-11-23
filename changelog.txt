@@ -1,0 +1,5 @@
+1.0.1
+    - renamed 'sw' to 'sv' for swedish language
+
+1.0.0
+    - Initial release

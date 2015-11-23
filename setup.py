@@ -12,7 +12,7 @@ with open(path.join(here, 'README')) as f:
 setup(
     name         = 'ingredient_parser',
 
-    version      = '1.0.0',
+    version      = '1.0.1',
     packages     = find_packages(exclude=['bin','lib','include','contrib', 'docs', 'tests']),
 
 
