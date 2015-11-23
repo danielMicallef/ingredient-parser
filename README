@@ -1,3 +1,6 @@
+NOTE: Documentation needs a ton of work.
+
+
 Description
 -----------
 Ingredient Parser is a simple utility to parse ingredients and return their name and measure. It currently supports Swedish and English language ingredients.
