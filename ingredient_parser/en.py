@@ -3,20 +3,33 @@ __author__ = 'sheraz/nibesh'
 import re
 from itertools import chain
 
-from utils import normalize, escape_re_string
+from .utils import normalize, escape_re_string
 
-UNITS = {"cup": ["cups", "cup", "c.", "c"], "fluid_ounce": ["fl. oz.", "fl oz", "fluid ounce", "fluid ounces"],
-         "gallon": ["gal", "gal.", "gallon", "gallons"], "ounce": ["oz", "oz.", "ounce", "ounces"],
-         "pint": ["pt", "pt.", "pint", "pints"], "pound": ["lb", "lb.", "pound", "pounds"],
+UNITS = {"cup": ["cups", "cup", "c.", "c"],
+         "fluid_ounce": ["fl. oz.", "fl oz", "fluid ounce", "fluid ounces"],
+         "gallon": ["gal", "gal.", "gallon", "gallons"],
+         "ounce": ["oz", "oz.", "ounce", "ounces"],
+         "pint": ["pt", "pt.", "pint", "pints"],
+         "pound": ["lb", "lb.", "pound", "pounds"],
          "quart": ["qt", "qt.", "qts", "qts.", "quart", "quarts"],
          "tablespoon": ["tbsp.", "tbsp", "T", "T.", "tablespoon", "tablespoons", "tbs.", "tbs"],
          "teaspoon": ["tsp.", "tsp", "t", "t.", "teaspoon", "teaspoons"],
-         "gram": ["g", "g.", "gr", "gr.", "gram", "grams"], "kilogram": ["kg", "kg.", "kilogram", "kilograms"],
-         "liter": ["l", "l.", "liter", "liters"], "milligram": ["mg", "mg.", "milligram", "milligrams"],
-         "milliliter": ["ml", "ml.", "milliliter", "milliliters"], "pinch": ["pinch", "pinches"],
-         "dash": ["dash", "dashes"], "touch": ["touch", "touches"], "handful": ["handful", "handfuls"],
-         "stick": ["stick", "sticks"], "clove": ["cloves", "clove"], "can": ["cans", "can"], "large": ["large"],
-         "small": ["small"], "scoop": ["scoop", "scoops"], "filets": ["filet", "filets"], "sprig": ["sprigs", "sprig"]}
+         "gram": ["g", "g.", "gr", "gr.", "gram", "grams"],
+         "kilogram": ["kg", "kg.", "kilogram", "kilograms"],
+         "liter": ["l", "l.", "liter", "liters"],
+         "milligram": ["mg", "mg.", "milligram", "milligrams"],
+         "milliliter": ["ml", "ml.", "milliliter", "milliliters"],
+         "pinch": ["pinch", "pinches"],
+         "dash": ["dash", "dashes"],
+         "touch": ["touch", "touches"],
+         "handful": ["handful", "handfuls"],
+         "stick": ["stick", "sticks"],
+         "clove": ["cloves", "clove"],
+         "can": ["cans", "can"], "large": ["large"],
+         "small": ["small"],
+         "scoop": ["scoop", "scoops"],
+         "filets": ["filet", "filets"],
+         "sprig": ["sprigs", "sprig"]}
 
 NUMBERS = ['seventeen', 'eighteen', 'thirteen', 'nineteen', 'fourteen', 'sixteen', 'fifteen', 'seventy', 'twelve',
            'eleven', 'eighty', 'thirty', 'ninety', 'twenty', 'seven', 'fifty', 'sixty', 'forty', 'three', 'eight',
@@ -43,6 +56,8 @@ def parse(st):
     res = PARSER_RE.match(st)
 
     return {
+        'quantity':(res.group('quantity') or '').strip(),
+        'unit':(res.group('unit') or '').strip(),
         'measure': (res.group('quantity') or '').strip() + ' ' + (res.group('unit') or '').strip(),
         'name': (res.group('name') or '').strip()
     }
